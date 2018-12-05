@@ -38,6 +38,12 @@ public class View implements Observer {
     private Label exterieure;
     private Label title;
     
+    private Label tempConsigne;
+    private Label tempInterieure;
+    private Label tempHumidite;
+    private Label tempPointDeRosee;
+    private Label tempExterieure;
+    
     private Chart chart;
     
     private SerialTest m;
@@ -63,21 +69,28 @@ public class View implements Observer {
         dropdown = new Dropdown();
         //instance label
         consigne = new Label();
-        consigne.setText("Temperature consigne : 20 °C");
+        consigne.setText("Temperature consigne");
+        
+        tempConsigne = new Label();
+        tempConsigne.setText("test");
 
         interieure = new Label();
-        interieure.setText("Temperature interieure : 20 °C");
+        interieure.setText("Temperature interieure");
+        tempInterieure = new Label();
 
         pointderosee = new Label();
-        pointderosee.setText("Point de rosée: 15 °C");
+        pointderosee.setText("Point de rosée");
+        tempPointDeRosee = new Label();
 
         exterieure = new Label();
-        exterieure.setText("Temperature exterieure : 15 °C");
+        exterieure.setText("Temperature exterieure");
+        tempExterieure = new Label();
 
         humidite = new Label();
-        humidite.setText("Humidite : 65%");
+        humidite.setText("Humidite:");
+        tempHumidite = new Label();
 
-        tempPanel.setLayout(new GridLayout(6,1));
+        tempPanel.setLayout(new GridLayout(6,2));
 
         tempPanel.add(dropdown);
         //ajout label au pan
@@ -86,6 +99,12 @@ public class View implements Observer {
         tempPanel.add(humidite);
         tempPanel.add(pointderosee);
         tempPanel.add(exterieure);
+        
+        tempPanel.add(tempConsigne);
+        tempPanel.add(tempInterieure);
+        tempPanel.add(tempHumidite);
+        tempPanel.add(tempPointDeRosee);
+        tempPanel.add(tempExterieure);
         //grid pour positionner 
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
@@ -241,9 +260,11 @@ public class View implements Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
+		System.out.println("test");
 		this.m = (SerialTest) arg0;
-		setHumidite(m.dhtH);
-		setTempInterne(m.temperature);
-		setTempExterne(m.dhtT);
+		tempHumidite.setText(Float.toString(m.dhtH));
+		tempInterieure.setText(Float.toString(m.temperature));
+		tempExterieure.setText(Float.toString(m.dhtT));
+		tempPointDeRosee.setText(Float.toString(m.dewPoint));
 	}
 }

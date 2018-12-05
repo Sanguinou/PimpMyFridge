@@ -2,8 +2,8 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/vince/Documents/dev/Java/PmfProject/lib/RXTXcomm.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vince/Documents/dev/Java/PmfProject/lib/jfreechart-1.0.19.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vince/Documents/dev/Java/PmfProject/lib/jcommon-1.0.23.jar"/>
+	<classpathentry kind="lib" path="lib/jcommon-1.0.23.jar"/>
+	<classpathentry kind="lib" path="lib/RXTXcomm.jar"/>
+	<classpathentry kind="lib" path="C:/Users/mattb/Documents/UE 2 - PMF/Prosit 2.04 - Java/code java/Pimp-my-fridge-master (2)/Pimp-my-fridge-master/lib/jfreechart-1.0.19.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

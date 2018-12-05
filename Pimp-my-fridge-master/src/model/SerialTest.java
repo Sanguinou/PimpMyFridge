@@ -30,6 +30,10 @@ public class SerialTest extends Observable implements SerialPortEventListener{
 	public float dhtH;
 	public float dewPoint;
 	
+	public SerialTest() {
+		System.out.println("serialtest");
+	}
+	
 	public void initialize() {
 		CommPortIdentifier portId = null;
 		Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();

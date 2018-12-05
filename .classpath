@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="Pimp-my-fridge-master/src"/>
-	<classpathentry exported="true" kind="lib" path="Pimp-my-fridge-master/lib/jcommon-1.0.23.jar"/>
-	<classpathentry exported="true" kind="lib" path="Pimp-my-fridge-master/lib/jfreechart-1.0.19.jar"/>
-	<classpathentry exported="true" kind="lib" path="Pimp-my-fridge-master/lib/RXTXcomm.jar"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
