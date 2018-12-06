@@ -52,7 +52,7 @@ public class View implements Observer {
      * Instantiates a new View.
      */
     public View(){
-    	//instance des class
+    //instance des class
         panel = new JPanel();
         tempPanel = new JPanel();
         frame = new Frame();
@@ -70,9 +70,7 @@ public class View implements Observer {
         //instance label
         consigne = new Label();
         consigne.setText("Temperature consigne");
-        
         tempConsigne = new Label();
-        tempConsigne.setText("test");
 
         interieure = new Label();
         interieure.setText("Temperature interieure");
@@ -90,20 +88,23 @@ public class View implements Observer {
         humidite.setText("Humidite:");
         tempHumidite = new Label();
 
-        tempPanel.setLayout(new GridLayout(6,2));
+        tempPanel.setLayout(new GridLayout(12,1));
 
         tempPanel.add(dropdown);
         //ajout label au pan
         tempPanel.add(consigne);
-        tempPanel.add(interieure);
-        tempPanel.add(humidite);
-        tempPanel.add(pointderosee);
-        tempPanel.add(exterieure);
-        
         tempPanel.add(tempConsigne);
+        
+        tempPanel.add(interieure);
         tempPanel.add(tempInterieure);
+        
+        tempPanel.add(humidite);
         tempPanel.add(tempHumidite);
+        
+        tempPanel.add(pointderosee);
         tempPanel.add(tempPointDeRosee);
+        
+        tempPanel.add(exterieure);
         tempPanel.add(tempExterieure);
         //grid pour positionner 
         GridBagConstraints c = new GridBagConstraints();
@@ -165,7 +166,7 @@ public class View implements Observer {
      *
      * @return the j free chart
      */
-	public JFreeChart createChart(){
+public JFreeChart createChart(){
         canetteSeries = new TimeSeries("Canette", Second.class);
         canetteSeries.setMaximumItemAge(3600);
 
@@ -258,13 +259,19 @@ public class View implements Observer {
         this.humidite.setText("Humidite : " + temp + "%");
     }
 
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		System.out.println("test");
-		this.m = (SerialTest) arg0;
-		tempHumidite.setText(Float.toString(m.dhtH));
-		tempInterieure.setText(Float.toString(m.temperature));
-		tempExterieure.setText(Float.toString(m.dhtT));
-		tempPointDeRosee.setText(Float.toString(m.dewPoint));
-	}
+@Override
+public void update(Observable arg0, Object arg1) {
+System.out.println("test");
+this.m = (SerialTest) arg0;
+tempHumidite.setText(Float.toString(m.dhtH));
+tempInterieure.setText(Float.toString(m.temperature));
+tempExterieure.setText(Float.toString(m.dhtT));
+tempPointDeRosee.setText(Float.toString(m.dewPoint));
+canetteSeries.add(new Second(new Date()), m.dhtH);
+interieurSeries.add(new Second(new Date()), m.temperature);
+exterieurSeries.add(new Second(new Date()), m.dhtT);
 }
+}
+
+ 
+
