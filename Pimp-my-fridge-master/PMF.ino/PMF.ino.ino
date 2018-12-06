@@ -14,36 +14,48 @@ float refTint = 15.0;
 #define DHTPIN 2 //pin used by the dht22
 #define DHTTYPE DHT22 //define the type of dht we're using
 
+
+
 DHT dht (DHTPIN, DHTTYPE); //declaring the sensor
 
+//usedpin
 #define MOSFETPIN 3
+#define alimThermistor 4
+#define alimDHT22 5
 
 void setup() 
 {
   Serial.begin(9600);
   pinMode(DHTPIN, INPUT);
   pinMode(MOSFETPIN, OUTPUT);
+  pinMode(alimThermistor, OUTPUT);
+  pinMode(alimDHT22, OUTPUT);
+  digitalWrite(5, HIGH);
   dht.begin();
+  delay(2000);
 }
 
 void loop() 
 {
-  Serial.print("La temperature interieur est de: ");
-  Serial.print(getTemperature()); //determine the interior temperature by using the thermistor
-  Serial.println(" °C");
+  digitalWrite(alimThermistor, HIGH);
+ // digitalWrite(alimDHT22, HIGH);
+  
+  //Serial.print("La temperature interieur est de: ");
+  Serial.println(getTemperature()); //determine the interior temperature by using the thermistor
+  //Serial.println(" °C");
 
-  Serial.print("La temperature exterieur est de: ");
-  Serial.print(getDhtT()); //dht22 temperature return
-  Serial.println(" °C");
+  //Serial.print("La temperature exterieur est de: ");
+  Serial.println(getDhtT()); //dht22 temperature return
+  //Serial.println(" °C");
 
-  Serial.print("L humidite exterieur est de: ");
-  Serial.print(getDhtH()); //dht22 temperature return
-  Serial.println(" %");
+  //Serial.print("L humidite exterieur est de: ");
+  Serial.println(getDhtH()); //dht22 temperature return
+  //Serial.println(" %");
 
-  Serial.print("Point de rosee: ");
-  Serial.print(dewPoint());
-  Serial.println(" °C");
-  Serial.println("");
+  //Serial.print("Point de rosee: ");
+  Serial.println(dewPoint());
+  //Serial.println(" °C");
+  //Serial.println("");
 
   if(getTemperature() > refTint) 
   {
@@ -59,7 +71,10 @@ void loop()
   {
     digitalWrite(MOSFETPIN, LOW); //Switch off the fridge
   }
-   delay(2000);
+  
+  digitalWrite(alimThermistor, LOW);
+  //digitalWrite(alimDHT22, LOW);
+  delay(2500);
   
 }
 
